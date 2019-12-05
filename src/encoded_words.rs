@@ -1,36 +1,6 @@
 //! Routines for manipulating RFC2047 encoded words.
 //!
 //! An ecoded word looks like this: `=?charset[*lang]?cte?encoded_string?=`.
-//!
-//! For more information about charset see the charset module.  Here it is one
-//! of the preferred MIME charset names (hopefully; you never know when parsing).
-//! cte (Content Transfer Encoding) is either 'q' or 'b' (ignoring case).  In
-//! theory other letters could be used for other encodings, but in practice this
-//! (almost?) never happens.  There could be a public API for adding entries
-//! to the CTE tables, but YAGNI for now.  'q' is Quoted Printable, 'b' is
-//! Base64.  The meaning of encoded_string should be obvious.  'lang' is optional
-//! as indicated by the brackets (they are not part of the syntax) but is almost
-//! never encountered in practice.
-//!
-//! The general interface for a CTE decoder is that it takes the encoded_string
-//! as its argument, and returns a tuple (cte_decoded_string, defects).  The
-//! cte_decoded_string is the original binary that was encoded using the
-//! specified cte.  'defects' is a list of MessageDefect instances indicating any
-//! problems encountered during conversion.  'charset' and 'lang' are the
-//! corresponding strings extracted from the EW, case preserved.
-//!
-//! The general interface for a CTE encoder is that it takes a binary sequence
-//! as input and returns the cte_encoded_string, which is an ascii-only string.
-//!
-//! Each decoder must also supply a length function that takes the binary
-//! sequence as its argument and returns the length of the resulting encoded
-//! string.
-//!
-//! The main API functions for the module are decode, which calls the decoder
-//! referenced by the cte specifier, and encode, which adds the appropriate
-//! RFC 2047 "chrome" to the encoded string, and can optionally automatically
-//! select the shortest possible encoding.  See their docstrings below for
-//! details.
 
 use regex::bytes::{Captures, NoExpand, Regex};
 use thiserror::Error;

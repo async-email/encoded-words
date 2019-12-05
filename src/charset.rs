@@ -10,12 +10,7 @@ lazy_static::lazy_static! {
 /// Map character sets to their email properties.
 ///
 /// Provides information about the requirements imposed on email
-/// for a specific character set.  It also provides convenience routines for
-/// converting between character sets, given the availability of the
-/// applicable codecs.  Given a character set, it will do its best to provide
-/// information on how to use that character set in an email in an
-/// RFC-compliant way.
-///
+/// for a specific character set.
 /// Certain character sets must be encoded with quoted-printable or base64
 /// when used in email headers or bodies.  Certain character sets must be
 /// converted outright, and are not allowed in email.

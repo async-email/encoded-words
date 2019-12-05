@@ -1,6 +1,18 @@
 # encoded-words
 
+> Routines for manipulating RFC2047 encoded words. Based on the email package from Python 3.
 
+
+## Example
+
+```rust
+use encoded_words::{EncodingFlag, encode};
+
+assert_eq!(
+    &encode("foo", None, EncodingFlag::Shortest, None),
+    "=?utf-8?q?foo?="
+);
+```
 
 ## License
 
