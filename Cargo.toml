@@ -1,6 +1,6 @@
 [package]
 name = "encoded-words"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["dignifiedquire <me@dignifiedquire.com>"]
 documentation = "https://docs.rs/encoded-words/"
 repository = "https://github.com/async-email/encoded-words"
